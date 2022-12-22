@@ -7,9 +7,14 @@
     {
         <p class="alert alert-danger">@TempData["success"]</p>
     }
+    <form asp-controller="Book" asp-action="Search">
+        
+            Title: <input  type="text" name="keyword" />
+            <input  type="submit" value="Filter" />
+        
+    </form>
 
 
-    
     <div class="card-group">
         <div class="row">
             @foreach (var Book in Model)

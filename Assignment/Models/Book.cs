@@ -12,6 +12,7 @@ namespace Assignment.Models
         public string Title { get; set; }
         [Url]
         public string Image { get; set; }
+        //public string Introduce { get; set; }
         public double Price { get; set; }
         [Range(1, 100)]
         public int Quantity { get; set; }

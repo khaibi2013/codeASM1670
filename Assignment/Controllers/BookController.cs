@@ -3,8 +3,10 @@ using Assignment.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Assignment.Controllers
 {
@@ -95,6 +97,15 @@ namespace Assignment.Controllers
         public IActionResult Store()
         {
             return View(context.Books.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult Search(string keyword)
+        {
+            var books = context.Books.Where(m => m.Title.Contains(keyword)).ToList();
+            
+
+            return View("Store", books);
         }
 
         //[HttpPost]

@@ -58,7 +58,18 @@ namespace Assignment.Controllers
             return RedirectToAction("IndexForCurrent", "Order");
         }
 
-       //[Authorize(Roles = "Customer,Admin")]
+        public IActionResult Delete1(int id)
+        {
+            var order = context.Order.Find(id);
+            var book = context.Books.Find(order.BookId);
+            book.Quantity += order.OrderQuantity;
+            context.Books.Update(book);
+            context.Order.Remove(order);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Order");
+        }
+
+        //[Authorize(Roles = "Customer,Admin")]
         public IActionResult Index()
         {
             var orders = context.Order
